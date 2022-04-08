@@ -1,0 +1,7 @@
+{
+  "components": {
+    "button": {
+      "src": "/button/index.html"
+    }
+  }
+}
