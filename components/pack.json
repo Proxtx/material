@@ -1,7 +1,16 @@
 {
   "components": {
     "button": {
-      "src": "/button/index.html"
+      "name": "m-button",
+      "template": "/components/button/index.html",
+      "component": "/components/button/main.js",
+      "styles": ["/components/lib/main.css", "/components/button/style.css"]
+    },
+    "text": {
+      "name": "m-text",
+      "template": "/components/text/index.html",
+      "component": "/components/text/main.js",
+      "styles": ["/components/lib/main.css", "/components/text/style.css"]
     }
   }
 }

@@ -1,0 +1,26 @@
+:root {
+  --letterSpacing: unset;
+  --fontWeight: unset;
+  --textTransform: unset;
+  --userSelect: unset;
+  --fontSize: unset;
+  --lineHeight: unset;
+}
+
+a {
+  font-family: var(--fontFamily);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accentColorText);
+  user-select: none;
+
+  font-weight: var(--fontWeight);
+  font-size: var(--fontSize);
+  line-height: var(--lineHeight);
+  letter-spacing: var(--letterSpacing);
+  text-transform: var(--textTransform);
+  user-select: var(--userSelect);
+}

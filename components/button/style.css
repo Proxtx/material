@@ -1,0 +1,15 @@
+button {
+  margin: var(--contentSpacing);
+  transition: var(--transitionTime);
+  padding: var(--contentSpacing) calc(var(--contentSpacing) * 2.6)
+    var(--contentSpacing) calc(var(--contentSpacing) * 2.6);
+  border-radius: var(--borderRadius);
+  position: relative;
+  overflow: hidden;
+}
+
+.contained {
+  border: none;
+  background-color: var(--accentColor);
+  color: var(--accentColorText);
+}
