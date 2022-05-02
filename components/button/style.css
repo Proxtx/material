@@ -13,3 +13,13 @@ button {
   background-color: var(--accentColor);
   color: var(--accentColorText);
 }
+
+.text {
+  border: none;
+  background-color: transparent;
+  color: var(--accentColor);
+}
+
+.text:hover {
+  background-color: var(--accentColorTransparent);
+}

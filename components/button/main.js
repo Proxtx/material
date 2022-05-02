@@ -23,7 +23,12 @@ const init = async () => {
   textComponent = textElem.component.component;
 
   button.addEventListener("click", (e) => {
-    wave(button, e.clientX - 5, e.clientY - 5);
+    let computedStyle = window.getComputedStyle(button);
+    wave(
+      button,
+      e.clientX - computedStyle.marginLeft.split("px")[0],
+      e.clientY - computedStyle.marginTop.split("px")[0]
+    );
   });
 };
 

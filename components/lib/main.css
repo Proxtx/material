@@ -2,6 +2,7 @@
   --contentSpacing: 8px;
   --transitionTime: 200ms;
   --accentColor: #1976d2;
+  --accentColorTransparent: rgba(25, 118, 210, 0.04);
   --borderRadius: 4px;
   --accentColorText: white;
   --fontFamily: "Roboto", "Helvetica", "Arial", sans-serif;
