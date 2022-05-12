@@ -19,7 +19,8 @@ export const componentSetup = (options, funcs, componentExport) => {
     {},
     {
       get: (target, p) => {
-        return document.documentElement.style.getPropertyValue("--" + p);
+        console.log(options);
+        return options.component.style.getPropertyValue("--" + p);
       },
 
       set: (target, p, value) => {

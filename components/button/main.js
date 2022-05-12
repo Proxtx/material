@@ -9,25 +9,36 @@ export const handler = async (options) => {
   mainDoc = options.document;
   await init();
   componentSetup(options, funcs, component);
+  colors = {
+    wave: {
+      text: component.style.accentColor,
+      contained: component.style.backgroundColor,
+    },
+  };
+  console.log(component);
   textComponent.run.styleSet("button");
 };
 
 let textElem;
 let button;
 let textComponent;
+let type;
+let colors;
 
 const init = async () => {
   button = document.getElementById("button");
   textElem = document.getElementById("text");
   await uiBuilder.ready(textElem);
   textComponent = textElem.component.component;
+  type = button.class;
 
   button.addEventListener("click", (e) => {
     let computedStyle = window.getComputedStyle(button);
     wave(
       button,
       e.clientX - computedStyle.marginLeft.split("px")[0],
-      e.clientY - computedStyle.marginTop.split("px")[0]
+      e.clientY - computedStyle.marginTop.split("px")[0],
+      colors.wave[type]
     );
   });
 };

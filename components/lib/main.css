@@ -1,10 +1,11 @@
-* {
+:host {
   --contentSpacing: 8px;
   --transitionTime: 200ms;
   --accentColor: #1976d2;
   --accentColorTransparent: rgba(25, 118, 210, 0.04);
   --borderRadius: 4px;
   --accentColorText: white;
+  --backgroundColor: white;
   --fontFamily: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
@@ -16,11 +17,12 @@
 @keyframes wave {
   0% {
     width: 0px;
+    opacity: 0.6;
   }
 
   100% {
     width: 200px;
-    background-color: rgba(250, 250, 250, 0);
+    opacity: 0;
   }
 }
 
@@ -31,7 +33,7 @@
   border-radius: 50%;
   aspect-ratio: 1;
   width: 0px;
-  background-color: rgba(250, 250, 250, 0.6);
   animation: wave 1s;
   transform: translate(-50%, -50%);
+  opacity: 0.6;
 }
