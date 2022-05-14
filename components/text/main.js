@@ -6,6 +6,7 @@ export const handler = (args) => {
   document = args.shadowDom;
   textElem = document.getElementById("text");
   componentSetup(args, funcs, component);
+  component.run.styleSet("default");
 };
 
 let textElem;
@@ -32,5 +33,14 @@ const styleSets = {
     userSelect: "none",
     fontSize: "0.875rem",
     lineHeight: "1.75",
+  },
+
+  default: {
+    letterSpacing: "unset",
+    fontWeight: "unset",
+    textTransform: "unset",
+    userSelect: "unset",
+    fontSize: "unset",
+    lineHeight: "unset",
   },
 };

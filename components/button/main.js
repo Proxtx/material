@@ -15,6 +15,7 @@ export const handler = async (options) => {
       contained: component.style.backgroundColor,
     },
   };
+  console.log(colors);
   console.log(component);
   textComponent.run.styleSet("button");
 };
@@ -30,10 +31,12 @@ const init = async () => {
   textElem = document.getElementById("text");
   await uiBuilder.ready(textElem);
   textComponent = textElem.component.component;
-  type = button.class;
+  type = button.className;
+  console.log(button);
 
   button.addEventListener("click", (e) => {
     let computedStyle = window.getComputedStyle(button);
+    console.log(type);
     wave(
       button,
       e.clientX - computedStyle.marginLeft.split("px")[0],

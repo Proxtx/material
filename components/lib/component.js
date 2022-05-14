@@ -19,16 +19,14 @@ export const componentSetup = (options, funcs, componentExport) => {
     {},
     {
       get: (target, p) => {
-        console.log(options);
-        return options.component.style.getPropertyValue("--" + p);
+        let targetStyle = findHostStyle(options.shadowDom);
+        return targetStyle.getPropertyValue("--" + p);
       },
 
       set: (target, p, value) => {
-        return (
-          document.documentElement.style.setProperty("--" + p, value) ||
-          value ||
-          true
-        );
+        console.log(options);
+        let targetStyle = findHostStyle(options.shadowDom);
+        return targetStyle.setProperty("--" + p, value) || value || true;
       },
     }
   );
@@ -36,7 +34,6 @@ export const componentSetup = (options, funcs, componentExport) => {
   component.style = style;
 
   for (let i of options.component.attributes) {
-    console.log(i);
     try {
       component.run[i.name] && component.run[i.name](i.value);
     } catch (e) {
@@ -49,4 +46,16 @@ export const applyStyleSet = (styleSet, component) => {
   for (let i of Object.keys(styleSet)) {
     component.style[i] = styleSet[i];
   }
+};
+
+const findHostStyle = (shadowDom) => {
+  let targetStyle;
+  console.log(shadowDom.styleSheets);
+  for (let t of shadowDom.styleSheets) {
+    for (let i of t.cssRules) {
+      if (i.selectorText == ":host") targetStyle = i.style;
+    }
+  }
+
+  return targetStyle;
 };

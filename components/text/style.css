@@ -1,12 +1,3 @@
-:host {
-  --letterSpacing: unset;
-  --fontWeight: unset;
-  --textTransform: unset;
-  --userSelect: unset;
-  --fontSize: unset;
-  --lineHeight: unset;
-}
-
 a {
   font-family: var(--fontFamily);
   font-weight: 500;
