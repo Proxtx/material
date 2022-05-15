@@ -24,7 +24,6 @@ export const componentSetup = (options, funcs, componentExport) => {
       },
 
       set: (target, p, value) => {
-        console.log(options);
         let targetStyle = findHostStyle(options.shadowDom);
         return targetStyle.setProperty("--" + p, value) || value || true;
       },
@@ -50,7 +49,6 @@ export const applyStyleSet = (styleSet, component) => {
 
 const findHostStyle = (shadowDom) => {
   let targetStyle;
-  console.log(shadowDom.styleSheets);
   for (let t of shadowDom.styleSheets) {
     for (let i of t.cssRules) {
       if (i.selectorText == ":host") targetStyle = i.style;

@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/Proxtx/material#readme",
   "dependencies": {
-    "@proxtx/uibuilder": "^1.0.2"
+    "@proxtx/uibuilder": "^1.0.3"
   }
 }

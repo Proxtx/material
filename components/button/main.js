@@ -15,15 +15,13 @@ export const handler = async (options) => {
       contained: component.style.backgroundColor,
     },
   };
-  console.log(colors);
-  console.log(component);
   textComponent.run.styleSet("button");
 };
 
 let textElem;
 let button;
 let textComponent;
-let type;
+let type = "contained";
 let colors;
 
 const init = async () => {
@@ -31,12 +29,8 @@ const init = async () => {
   textElem = document.getElementById("text");
   await uiBuilder.ready(textElem);
   textComponent = textElem.component.component;
-  type = button.className;
-  console.log(button);
-
   button.addEventListener("click", (e) => {
     let computedStyle = window.getComputedStyle(button);
-    console.log(type);
     wave(
       button,
       e.clientX - computedStyle.marginLeft.split("px")[0],
@@ -44,6 +38,8 @@ const init = async () => {
       colors.wave[type]
     );
   });
+
+  applyType(type, button, typeClasses);
 };
 
 export let component = {};
@@ -52,7 +48,18 @@ let funcs = {
   text: (text) => {
     textComponent.values.text = text;
   },
-  element: async (element) => {
-    funcs.text(element.innerText);
+  type: (newType) => {
+    type = newType;
+    applyType(type, button, typeClasses);
   },
+};
+
+const typeClasses = {
+  contained: ["contained", "hoverShadow"],
+  text: ["text"],
+};
+
+const applyType = (type, elem, typeClasses) => {
+  let classes = typeClasses[type];
+  elem.className = classes.join(" ");
 };

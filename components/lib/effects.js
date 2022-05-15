@@ -1,5 +1,4 @@
 export const wave = (elem, x, y, color) => {
-  console.log(color);
   let waveElem = document.createElement("div");
   waveElem.className = "wave";
   waveElem.style.left = x + "px";
