@@ -1,65 +1,75 @@
 import { componentSetup } from "../lib/component.js";
 import { wave } from "../lib/effects.js";
 
-let document;
-let mainDoc;
+export class Component {
+  shadowDom;
+  textElem;
+  button;
+  textComponent;
+  type = "contained";
+  colors;
 
-export const handler = async (options) => {
-  document = options.shadowDom;
-  mainDoc = options.document;
-  await init();
-  componentSetup(options, funcs, component);
-  colors = {
-    wave: {
-      text: component.style.accentColor,
-      contained: component.style.backgroundColor,
+  constructor(options) {
+    return new Promise(async (r) => {
+      this.shadowDom = options.shadowDom;
+
+      this.button = this.shadowDom.getElementById("button");
+      this.textElem = this.shadowDom.getElementById("text");
+
+      await uiBuilder.ready(this.textElem);
+
+      this.textComponent = this.textElem.component.component;
+      this.textComponent.run.styleSet("button");
+
+      this.button.addEventListener("click", this.waveListener);
+      this.applyType(this.type, this.button, this.typeClasses);
+
+      componentSetup(options, this.funcs, this.component);
+
+      this.updateColors();
+
+      r();
+    });
+  }
+
+  component = {};
+
+  funcs = {
+    text: (text) => {
+      this.textComponent.values.text = text;
+    },
+    type: (newType) => {
+      this.type = newType;
+      this.applyType(this.type, this.button, this.typeClasses);
     },
   };
-  textComponent.run.styleSet("button");
-};
 
-let textElem;
-let button;
-let textComponent;
-let type = "contained";
-let colors;
+  typeClasses = {
+    contained: ["contained", "hoverShadow"],
+    text: ["text"],
+  };
 
-const init = async () => {
-  button = document.getElementById("button");
-  textElem = document.getElementById("text");
-  await uiBuilder.ready(textElem);
-  textComponent = textElem.component.component;
-  button.addEventListener("click", (e) => {
-    let computedStyle = window.getComputedStyle(button);
+  applyType = () => {
+    let classes = this.typeClasses[this.type];
+    this.button.className = classes.join(" ");
+  };
+
+  updateColors = () => {
+    this.colors = {
+      wave: {
+        text: this.component.style.accentColor,
+        contained: this.component.style.backgroundColor,
+      },
+    };
+  };
+
+  waveListener = (e) => {
+    let computedStyle = window.getComputedStyle(this.button);
     wave(
-      button,
+      this.button,
       e.clientX - computedStyle.marginLeft.split("px")[0],
       e.clientY - computedStyle.marginTop.split("px")[0],
-      colors.wave[type]
+      this.colors.wave[this.type]
     );
-  });
-
-  applyType(type, button, typeClasses);
-};
-
-export let component = {};
-
-let funcs = {
-  text: (text) => {
-    textComponent.values.text = text;
-  },
-  type: (newType) => {
-    type = newType;
-    applyType(type, button, typeClasses);
-  },
-};
-
-const typeClasses = {
-  contained: ["contained", "hoverShadow"],
-  text: ["text"],
-};
-
-const applyType = (type, elem, typeClasses) => {
-  let classes = typeClasses[type];
-  elem.className = classes.join(" ");
-};
+  };
+}

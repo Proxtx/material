@@ -1,46 +1,43 @@
 import { componentSetup, applyStyleSet } from "../lib/component.js";
 
-let document;
+export class Component {
+  args;
+  textElem;
+  component = {};
 
-export const handler = (args) => {
-  document = args.shadowDom;
-  textElem = document.getElementById("text");
-  componentSetup(args, funcs, component);
-  component.run.styleSet("default");
-};
+  constructor(args) {
+    this.args = args;
+    this.textElem = this.args.shadowDom.getElementById("text");
+    componentSetup(args, this.funcs, this.component);
+    this.component.run.styleSet("default");
+  }
 
-let textElem;
+  funcs = {
+    text: (text) => {
+      this.textElem.innerText = text;
+    },
+    styleSet: (name) => {
+      applyStyleSet(this.styleSets[name], this.component);
+    },
+  };
 
-export const component = {};
+  styleSets = {
+    button: {
+      letterSpacing: "1px",
+      fontWeight: "600",
+      textTransform: "uppercase",
+      userSelect: "none",
+      fontSize: "0.875rem",
+      lineHeight: "1.75",
+    },
 
-const funcs = {
-  text: (text) => {
-    textElem.innerText = text;
-  },
-  element: (element) => {
-    if (element.innerText) funcs.text(element.innerText);
-  },
-  styleSet: (name) => {
-    applyStyleSet(styleSets[name], component);
-  },
-};
-
-const styleSets = {
-  button: {
-    letterSpacing: "1px",
-    fontWeight: "600",
-    textTransform: "uppercase",
-    userSelect: "none",
-    fontSize: "0.875rem",
-    lineHeight: "1.75",
-  },
-
-  default: {
-    letterSpacing: "unset",
-    fontWeight: "unset",
-    textTransform: "unset",
-    userSelect: "unset",
-    fontSize: "unset",
-    lineHeight: "unset",
-  },
-};
+    default: {
+      letterSpacing: "unset",
+      fontWeight: "unset",
+      textTransform: "unset",
+      userSelect: "unset",
+      fontSize: "unset",
+      lineHeight: "unset",
+    },
+  };
+}
