@@ -64,11 +64,11 @@ export class Component {
   };
 
   waveListener = (e) => {
-    let computedStyle = window.getComputedStyle(this.button);
+    let bounds = this.button.getBoundingClientRect();
     wave(
       this.button,
-      e.clientX - computedStyle.marginLeft.split("px")[0],
-      e.clientY - computedStyle.marginTop.split("px")[0],
+      e.clientX - bounds.left,
+      e.clientY - bounds.top,
       this.colors.wave[this.type]
     );
   };

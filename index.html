@@ -11,12 +11,21 @@
         height: 100vh;
         margin: 0;
       }
+      #test {
+        padding-top: 100px;
+        height: 100px;
+        background-color: black;
+        overflow: scroll;
+        width: 100px;
+      }
     </style>
   </head>
   <body>
     <m-button type="text">Text</m-button>
-    <m-text>test</m-text>
-    <m-button>Oh no Oh no Oh nononono</m-button>
+    <!-- m-text>test</m-text -->
+    <div id="test">
+      <m-button>Oh no Oh no Oh nononono</m-button>
+    </div>
     <script type="module" src="test.js"></script>
   </body>
 </html>

@@ -25,6 +25,7 @@ export const componentSetup = (options, funcs, componentExport) => {
 
       set: (target, p, value) => {
         let targetStyle = findHostStyle(options.shadowDom);
+        console.log("style set");
         return targetStyle.setProperty("--" + p, value) || value || true;
       },
     }
