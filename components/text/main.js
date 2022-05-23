@@ -17,7 +17,6 @@ export class Component {
       this.textElem.innerText = text;
     },
     styleSet: (name) => {
-      console.log("StyleSet", name);
       applyStyleSet(this.styleSets[name], this.component);
     },
   };

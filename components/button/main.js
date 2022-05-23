@@ -1,5 +1,5 @@
 import { componentSetup } from "../lib/component.js";
-import { wave } from "../lib/effects.js";
+import { wave, waveListener } from "../lib/effects.js";
 
 export class Component {
   shadowDom;
@@ -8,30 +8,6 @@ export class Component {
   textComponent;
   type = "contained";
   colors;
-
-  constructor(options) {
-    return new Promise(async (r) => {
-      this.shadowDom = options.shadowDom;
-
-      this.button = this.shadowDom.getElementById("button");
-      this.textElem = this.shadowDom.getElementById("text");
-
-      await uiBuilder.ready(this.textElem);
-
-      this.textComponent = this.textElem.component.component;
-      this.textComponent.run.styleSet("button");
-
-      this.button.addEventListener("click", this.waveListener);
-      this.applyType(this.type, this.button, this.typeClasses);
-
-      componentSetup(options, this.funcs, this.component);
-
-      this.updateColors();
-
-      r();
-    });
-  }
-
   component = {};
 
   funcs = {
@@ -45,9 +21,35 @@ export class Component {
   };
 
   typeClasses = {
-    contained: ["contained", "hoverShadow"],
-    text: ["text"],
+    contained: ["contained", "hoverShadow", "overwrite"],
+    text: ["text", "overwrite"],
+    outlined: ["text", "outlined", "overwrite"],
   };
+
+  constructor(options) {
+    return (async () => {
+      this.shadowDom = options.shadowDom;
+
+      this.button = this.shadowDom.getElementById("button");
+      this.textElem = this.shadowDom.getElementById("text");
+
+      await uiBuilder.ready(this.textElem);
+
+      this.textComponent = this.textElem.component.component;
+      this.textComponent.run.styleSet("button");
+
+      this.button.addEventListener("click", (e) =>
+        waveListener(e, this.button, this.colors.wave[this.type])
+      );
+      this.applyType(this.type, this.button, this.typeClasses);
+
+      componentSetup(options, this.funcs, this.component);
+
+      this.updateColors();
+
+      return this;
+    })();
+  }
 
   applyType = () => {
     let classes = this.typeClasses[this.type];
@@ -59,17 +61,8 @@ export class Component {
       wave: {
         text: this.component.style.accentColor,
         contained: this.component.style.backgroundColor,
+        outlined: this.component.style.accentColor,
       },
     };
-  };
-
-  waveListener = (e) => {
-    let bounds = this.button.getBoundingClientRect();
-    wave(
-      this.button,
-      e.clientX - bounds.left,
-      e.clientY - bounds.top,
-      this.colors.wave[this.type]
-    );
   };
 }

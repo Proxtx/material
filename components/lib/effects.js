@@ -9,3 +9,8 @@ export const wave = (elem, x, y, color) => {
     elem.removeChild(waveElem);
   }, 3000);
 };
+
+export const waveListener = (e, elem, color) => {
+  let bounds = elem.getBoundingClientRect();
+  wave(elem, e.clientX - bounds.left, e.clientY - bounds.top, color);
+};

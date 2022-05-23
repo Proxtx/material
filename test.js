@@ -1,4 +1,4 @@
-import { loadPack } from "/node_modules/@proxtx/uibuilder/main.js";
+import { loadPack, ready } from "/node_modules/@proxtx/uibuilder/main.js";
 
 loadPack("/components/pack.json");
 
@@ -16,3 +16,7 @@ loadPack("/components/pack.json");
   }, 200);
   //wave(button, e.clientX, e.clientY);
 });*/
+
+let textButton = document.getElementById("textButton");
+await ready(textButton);
+textButton.component.component.style.contentSpacing = "20px";
