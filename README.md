@@ -20,7 +20,7 @@ https://mui.com/components/bottom-navigation/
 https://mui.com/components/menus/
 https://mui.com/components/tabs/
 
-https://mui.com/components/box/ !!!!! Use box for custom html code
+https://mui.com/components/box/ !!!!! Use box for custom html code (turns out this stupid)
 
 Wrap like
 wrap column (stack)
