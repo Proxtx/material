@@ -8,12 +8,6 @@ button {
   overflow: hidden;
 }
 
-.overwrite {
-  background-color: var(--backgroundColor);
-  border: 1px solid var(--borderColor);
-  color: var(--color);
-}
-
 .contained {
   border: none;
   background-color: var(--accentColor);
