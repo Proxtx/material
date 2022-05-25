@@ -34,7 +34,7 @@ export const componentSetup = (options, funcs, componentExport) => {
 
   for (let i of options.component.attributes) {
     try {
-      component.run[i.name] && component.run[i.name](i.value);
+      component.run[i.name]?.(genAttributeFromString(i.value));
     } catch (e) {
       console.log(e);
     }
@@ -45,4 +45,18 @@ export const applyStyleSet = (styleSet, component) => {
   for (let i of Object.keys(styleSet)) {
     component.style[i] = styleSet[i];
   }
+};
+
+export const attributeChangedCallbackGen = (funcs) => {
+  return (name, oldValue, newValue) => {
+    newValue = genAttributeFromString(newValue);
+    funcs[name]?.(newValue);
+  };
+};
+
+const genAttributeFromString = (string) => {
+  try {
+    string = JSON.parse(string);
+  } catch {}
+  return string;
 };

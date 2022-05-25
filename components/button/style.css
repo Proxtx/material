@@ -27,3 +27,14 @@ button {
 .text:hover {
   background-color: var(--accentColorTransparent);
 }
+
+.disabled {
+  background-color: var(--disabledBackgroundColor);
+  color: var(--disabledTextColor);
+  border: none;
+}
+
+.disabled:hover {
+  background-color: var(--disabledBackgroundColor);
+  box-shadow: none;
+}

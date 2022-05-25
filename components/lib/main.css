@@ -7,6 +7,8 @@
   --accentColorText: white;
   --backgroundColor: white;
   --fontFamily: "Roboto", "Helvetica", "Arial", sans-serif;
+  --disabledBackgroundColor: rgba(0, 0, 0, 0.12);
+  --disabledTextColor: rgba(0, 0, 0, 0.26);
 }
 
 .hoverShadow:hover {

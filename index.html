@@ -14,19 +14,19 @@
       #test {
         padding-top: 100px;
         height: 100px;
-        background-color: black;
+        background-color: white;
         overflow: scroll;
         width: 100px;
       }
     </style>
   </head>
   <body>
-    <m-button type="text" id="textButton">Text</m-button>
+    <m-button type="text" id="textButton" disabled="true">Text</m-button>
     <!-- m-text>test</m-text -->
     <div id="test">
       <m-button type="contained">Oh no Oh no Oh nononono</m-button>
     </div>
-    <m-button type="outlined">Outlined</m-button>
+    <m-button type="outlined" disabled="false">Outlined</m-button>
     <script type="module" src="test.js"></script>
   </body>
 </html>

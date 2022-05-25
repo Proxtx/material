@@ -1,5 +1,8 @@
-import { componentSetup } from "../lib/component.js";
-import { wave, waveListener } from "../lib/effects.js";
+import {
+  componentSetup,
+  attributeChangedCallbackGen,
+} from "../lib/component.js";
+import { waveListener } from "../lib/effects.js";
 
 export class Component {
   shadowDom;
@@ -9,6 +12,7 @@ export class Component {
   type = "contained";
   colors;
   component = {};
+  disabled;
 
   funcs = {
     text: (text) => {
@@ -18,13 +22,22 @@ export class Component {
       this.type = newType;
       this.applyType(this.type, this.button, this.typeClasses);
     },
+    disabled: (disabled) => {
+      this.button.disabled = disabled;
+      this.disabled = disabled;
+      this.typeClasses.global.disabled = disabled;
+      this.applyType();
+    },
   };
 
   typeClasses = {
-    contained: ["contained", "hoverShadow", "overwrite"],
-    text: ["text", "overwrite"],
-    outlined: ["text", "outlined", "overwrite"],
+    contained: { contained: true, hoverShadow: true },
+    text: { text: true },
+    outlined: { text: true, outlined: true },
+    global: { disabled: false },
   };
+
+  attributeChangedCallback = attributeChangedCallbackGen(this.funcs);
 
   constructor(options) {
     return (async () => {
@@ -53,7 +66,10 @@ export class Component {
 
   applyType = () => {
     let classes = this.typeClasses[this.type];
-    this.button.className = classes.join(" ");
+    this.button.className = objectKeysToArray({
+      ...classes,
+      ...this.typeClasses.global,
+    }).join(" ");
   };
 
   updateColors = () => {
@@ -66,3 +82,11 @@ export class Component {
     };
   };
 }
+
+const objectKeysToArray = (obj) => {
+  let arr = [];
+  for (let i of Object.keys(obj)) {
+    if (obj[i]) arr.push(i);
+  }
+  return arr;
+};

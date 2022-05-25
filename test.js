@@ -20,3 +20,7 @@ loadPack("/components/pack.json");
 let textButton = document.getElementById("textButton");
 await ready(textButton);
 textButton.component.component.style.contentSpacing = "20px";
+textButton.component.component.style.accentColor = "red";
+textButton.component.component.style.accentColorTransparent =
+  "rgba(250, 118, 210, 0.04)";
+textButton.component.updateColors();
