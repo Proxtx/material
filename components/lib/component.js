@@ -60,3 +60,12 @@ const genAttributeFromString = (string) => {
   } catch {}
   return string;
 };
+
+export const addCustomEventManager = (targetElement, source, listenFor) => {
+  for (let i of listenFor) {
+    source.addEventListener(i, (e) => {
+      let E = new e.constructor(e.type, e);
+      targetElement.dispatchEvent(E);
+    });
+  }
+};

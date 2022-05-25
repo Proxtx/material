@@ -11,6 +11,12 @@
       "template": "/components/text/index.html",
       "component": "/components/text/main.js",
       "styles": ["/components/lib/main.css", "/components/text/style.css"]
+    },
+    "checkbox": {
+      "name": "m-checkbox",
+      "template": "/components/checkbox/index.html",
+      "component": "/components/checkbox/main.js",
+      "styles": ["/components/lib/main.css", "/components/checkbox/style.css"]
     }
   }
 }

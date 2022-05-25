@@ -18,12 +18,12 @@
 
 @keyframes wave {
   0% {
-    width: 0px;
+    width: 20%;
     opacity: 0.6;
   }
 
   100% {
-    width: 200px;
+    width: 200%;
     opacity: 0;
   }
 }

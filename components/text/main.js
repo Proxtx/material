@@ -1,4 +1,8 @@
-import { componentSetup, applyStyleSet } from "../lib/component.js";
+import {
+  componentSetup,
+  applyStyleSet,
+  attributeChangedCallbackGen,
+} from "../lib/component.js";
 
 export class Component {
   args;
@@ -40,4 +44,6 @@ export class Component {
       lineHeight: "unset",
     },
   };
+
+  attributeChangedCallback = attributeChangedCallbackGen(this.funcs);
 }

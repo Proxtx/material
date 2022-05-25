@@ -14,3 +14,8 @@ export const waveListener = (e, elem, color) => {
   let bounds = elem.getBoundingClientRect();
   wave(elem, e.clientX - bounds.left, e.clientY - bounds.top, color);
 };
+
+export const waveListenerCenter = (e, elem, color) => {
+  let bounds = elem.getBoundingClientRect();
+  wave(elem, bounds.width / 2, bounds.height / 2, color);
+};
