@@ -9,11 +9,12 @@
   --fontFamily: "Roboto", "Helvetica", "Arial", sans-serif;
   --disabledBackgroundColor: rgba(0, 0, 0, 0.12);
   --disabledTextColor: rgba(0, 0, 0, 0.26);
+  --shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%),
+    0px 1px 10px 0px rgb(0 0 0 / 12%);
 }
 
 .hoverShadow:hover {
-  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
-    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  box-shadow: var(--shadow);
 }
 
 @keyframes wave {
@@ -38,4 +39,5 @@
   animation: wave 1s;
   transform: translate(-50%, -50%);
   opacity: 0.6;
+  pointer-events: none;
 }
