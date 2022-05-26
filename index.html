@@ -10,6 +10,8 @@
         width: 100vw;
         height: 100vh;
         margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
       }
       #test {
         padding-top: 100px;
@@ -27,10 +29,12 @@
       <m-button type="contained">Oh no Oh no Oh nononono</m-button>
     </div>
     <m-button type="outlined" disabled="false">Outlined</m-button>
-    <m-checkbox style="display: inline-block"></m-checkbox>
+    <m-checkbox style="display: inline-block" check="true"></m-checkbox>
     <m-button type="contained" disabled="true">contained</m-button><br />
-    <div style="padding: 50px"></div>
-      <m-card wave="true">
+    <m-card style="margin: 20px" wave="true">
+      <m-text><h1 style="user-select: none;">This is text 1234</h1></m-text>
+    </m-card>
+      <m-card>
             <div style="display: flex; align-items: center">
               <m-checkbox></m-checkbox><m-text>Test 5678</m-text
                 ><m-button>Hallo 12345</m-button>

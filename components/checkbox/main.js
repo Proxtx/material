@@ -27,8 +27,8 @@ export class Component {
   constructor(options) {
     this.options = options;
     this.shadowDom = options.shadowDom;
-    componentSetup(options, this.funcs, this.component);
     this.checkBox = this.shadowDom.getElementById("checkbox");
+    componentSetup(options, this.funcs, this.component);
     this.wrap = this.shadowDom.getElementById("wrap");
     this.wrap.addEventListener("click", () => {
       this.funcs.switch();
