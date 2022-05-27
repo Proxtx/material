@@ -1,9 +1,11 @@
 button {
-  margin: var(--contentSpacing);
+  margin: calc(var(--contentSpacing) * var(--scale));
   transition: var(--transitionTime);
-  padding: var(--contentSpacing) calc(var(--contentSpacing) * 2.6)
-    var(--contentSpacing) calc(var(--contentSpacing) * 2.6);
-  border-radius: var(--borderRadius);
+  padding: calc(var(--contentSpacing) * var(--scale))
+    calc(var(--contentSpacing) * 2.6 * var(--scale))
+    calc(var(--contentSpacing) * var(--scale))
+    calc(var(--contentSpacing) * 2.6 * var(--scale));
+  border-radius: calc(var(--borderRadius) * var(--scale));
   position: relative;
   overflow: hidden;
 }
@@ -21,7 +23,7 @@ button {
 }
 
 .outlined {
-  border: 1px solid var(--accentColor);
+  border: calc(1px * var(--scale)) solid var(--accentColor);
 }
 
 .text:hover {
