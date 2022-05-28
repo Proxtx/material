@@ -1,6 +1,7 @@
 import {
   componentSetup,
   attributeChangedCallbackGen,
+  applyType,
 } from "../lib/component.js";
 import { waveListener } from "../lib/effects.js";
 
@@ -20,7 +21,7 @@ export class Component {
     },
     type: (newType) => {
       this.type = newType;
-      this.applyType(this.type, this.button, this.typeClasses);
+      this.applyType();
     },
     disabled: (disabled) => {
       this.button.disabled = disabled;
@@ -54,7 +55,7 @@ export class Component {
       this.button.addEventListener("click", (e) =>
         waveListener(e, this.button, this.colors.wave[this.type])
       );
-      this.applyType(this.type, this.button, this.typeClasses);
+      this.applyType();
 
       componentSetup(options, this.funcs, this.component);
 
@@ -65,11 +66,7 @@ export class Component {
   }
 
   applyType = () => {
-    let classes = this.typeClasses[this.type];
-    this.button.className = objectKeysToArray({
-      ...classes,
-      ...this.typeClasses.global,
-    }).join(" ");
+    applyType(this.type, this.button, this.typeClasses);
   };
 
   updateColors = () => {
@@ -82,11 +79,3 @@ export class Component {
     };
   };
 }
-
-const objectKeysToArray = (obj) => {
-  let arr = [];
-  for (let i of Object.keys(obj)) {
-    if (obj[i]) arr.push(i);
-  }
-  return arr;
-};

@@ -31,12 +31,12 @@ button {
 }
 
 .disabled {
-  background-color: var(--disabledBackgroundColor);
-  color: var(--disabledTextColor);
+  background-color: var(--grey);
+  color: var(--greyText);
   border: none;
 }
 
 .disabled:hover {
-  background-color: var(--disabledBackgroundColor);
+  background-color: var(--grey);
   box-shadow: none;
 }

@@ -69,3 +69,19 @@ export const addCustomEventManager = (targetElement, source, listenFor) => {
     });
   }
 };
+
+export const applyType = (type, elem, typeClasses) => {
+  let classes = typeClasses[type];
+  elem.className = objectKeysToArray({
+    ...classes,
+    ...typeClasses.global,
+  }).join(" ");
+};
+
+const objectKeysToArray = (obj) => {
+  let arr = [];
+  for (let i of Object.keys(obj)) {
+    if (obj[i]) arr.push(i);
+  }
+  return arr;
+};

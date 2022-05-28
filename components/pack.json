@@ -23,6 +23,12 @@
       "template": "/components/card/index.html",
       "component": "/components/card/main.js",
       "styles": ["/components/lib/main.css", "/components/card/style.css"]
+    },
+    "text-input": {
+      "name": "m-text-input",
+      "template": "/components/text-input/index.html",
+      "component": "/components/text-input/main.js",
+      "styles": ["/components/lib/main.css", "/components/text-input/style.css"]
     }
   }
 }
