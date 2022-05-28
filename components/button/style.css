@@ -1,11 +1,9 @@
 button {
-  margin: calc(var(--contentSpacing) * var(--scale));
+  margin: calc(var(--contentSpacing));
   transition: var(--transitionTime);
-  padding: calc(var(--contentSpacing) * var(--scale))
-    calc(var(--contentSpacing) * 2.6 * var(--scale))
-    calc(var(--contentSpacing) * var(--scale))
-    calc(var(--contentSpacing) * 2.6 * var(--scale));
-  border-radius: calc(var(--borderRadius) * var(--scale));
+  padding: var(--contentSpacing) calc(var(--contentSpacing) * 2.6)
+    var(--contentSpacing) calc(var(--contentSpacing) * 2.6);
+  border-radius: var(--borderRadius);
   position: relative;
   overflow: hidden;
 }

@@ -1,6 +1,5 @@
 :host {
   --inputPaddingLeft: calc(16.5px * var(--scale));
-  --focusTransitionTime: 0.2s;
 }
 
 #wrap {
@@ -40,7 +39,7 @@
 }
 
 .wrapFilled:hover {
-  border-bottom: 1.5px solid var(--outline);
+  border-bottom: 1px solid var(--outline);
 }
 
 #placeholder {
@@ -57,7 +56,7 @@
 }
 
 .placeholderOutlinedTop {
-  transition: var(--focusTransitionTime);
+  transition: var(--transitionTime);
   left: calc(var(--inputPaddingLeft) - 5px * var(--scale));
   top: 0;
   transform: translateY(-50%);
@@ -67,7 +66,7 @@
 }
 
 .placeholderOutlinedNormal {
-  transition: var(--focusTransitionTime);
+  transition: var(--transitionTime);
   left: var(--inputPaddingLeft);
   top: 50%;
   transform: translateY(-50%);
@@ -92,7 +91,7 @@
   height: 100%;
   box-sizing: border-box;
   border: none;
-  font-size: 110%;
+  font-size: calc(110% * var(--scale));
   border-radius: var(--borderRadius);
   padding: var(--inputPaddingLeft) calc(14px * var(--scale));
 }
@@ -120,7 +119,7 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  transition: var(--focusTransitionTime);
+  transition: var(--transitionTime);
 }
 
 .lineFocus {
@@ -131,5 +130,5 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  transition: var(--focusTransitionTime);
+  transition: var(--transitionTime);
 }

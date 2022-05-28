@@ -1,5 +1,5 @@
 #card {
-  padding: calc(var(--contentSpacing) * 2 * var(--scale));
+  padding: calc(var(--contentSpacing) * 2);
   box-shadow: var(--shadow);
   border-radius: var(--borderRadius);
   background-color: var(--backgroundColor);

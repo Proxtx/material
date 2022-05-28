@@ -40,7 +40,7 @@ export class Component {
       fontWeight: "unset",
       textTransform: "unset",
       userSelect: "unset",
-      fontSize: "unset",
+      fontSize: "calc(100% * var(--scale))",
       lineHeight: "unset",
     },
   };

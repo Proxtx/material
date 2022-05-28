@@ -152,16 +152,17 @@ export class Component {
     this.applyType();
     this.input.addEventListener("focus", this.focusEventChange);
     this.input.addEventListener("blur", this.focusEventChange);
+    this.input.addEventListener("input", this.focusEventChange);
     addCustomEventManager(this.options.component, this.input, [
       "change",
       "update",
+      "input",
     ]);
   }
 
   applyType = () => {
     let namedFocus = this.focused ? "focused" : "notFocused";
     let namedActive = this.input.value ? "Active" : "NotActive";
-    console.log(namedFocus + namedActive);
     applyType(this.type, this.input, this.typeClasses.input);
     applyType(
       namedFocus + namedActive,
@@ -176,4 +177,13 @@ export class Component {
     this.focused = document.activeElement == this.options.component;
     this.applyType();
   };
+
+  get value() {
+    return this.input.value;
+  }
+
+  set value(value) {
+    this.input.value = value;
+    this.focusEventChange();
+  }
 }

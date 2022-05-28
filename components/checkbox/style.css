@@ -1,6 +1,6 @@
 #wrap {
   position: relative;
-  padding: calc(var(--contentSpacing) * var(--scale));
+  padding: var(--contentSpacing);
   border-radius: 50%;
   display: inline-block;
   overflow: hidden;
@@ -12,10 +12,10 @@
 
 #checkbox {
   margin: 4px;
-  width: calc(var(--contentSpacing) * 3 * var(--scale));
-  height: calc(var(--contentSpacing) * 3 * var(--scale));
+  width: calc(var(--contentSpacing) * 3);
+  height: calc(var(--contentSpacing) * 3);
   accent-color: var(--accentColor);
-  border-radius: calc(var(--borderRadius) * var(--scale));
+  border-radius: var(--borderRadius);
 }
 
 #checkbox:hover {
