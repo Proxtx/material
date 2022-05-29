@@ -144,10 +144,10 @@ export class Component {
   constructor(options) {
     this.options = options;
     this.shadowDom = options.shadowDom;
-    this.input = this.shadowDom.getElementById("input");
     this.placeholder = this.shadowDom.getElementById("placeholder");
     this.line = this.shadowDom.getElementById("line");
     this.wrap = this.shadowDom.getElementById("wrap");
+    this.input = this.getInput();
     componentSetup(options, this.funcs, this.component);
     this.applyType();
     this.input.addEventListener("focus", this.focusEventChange);
@@ -159,6 +159,16 @@ export class Component {
       "input",
     ]);
   }
+
+  getInput = () => {
+    if (!this.options.component.getAttribute("textarea"))
+      return this.shadowDom.getElementById("input");
+    this.wrap.removeChild(this.shadowDom.getElementById("input"));
+    let textArea = document.createElement("textarea");
+    textArea.id = "input";
+    this.wrap.appendChild(textArea);
+    return textArea;
+  };
 
   applyType = () => {
     let namedFocus = this.focused ? "focused" : "notFocused";

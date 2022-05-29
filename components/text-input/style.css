@@ -4,9 +4,7 @@
 
 #wrap {
   position: relative;
-  width: calc(200px * var(--scale));
-  height: calc(56px * var(--scale));
-  display: inline-block;
+  display: inline-flex;
 }
 
 .wrapOutlined {
