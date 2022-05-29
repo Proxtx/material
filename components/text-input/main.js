@@ -15,6 +15,9 @@ export class Component {
     placeholder: (placeholder) => {
       this.placeholder.innerText = placeholder;
     },
+    value: (value) => {
+      this.value = value;
+    },
   };
   options;
   shadowDom;
