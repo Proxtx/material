@@ -7,14 +7,12 @@ import {
 import { waveListenerCenter } from "../lib/effects.js";
 
 export class Component {
-  checked = false;
   checkBox;
   wrap;
   component = {};
   funcs = {
     check: (check) => {
       this.checked = check;
-      this.checkBox.checked = check;
     },
     switch: () => {
       this.funcs.check(!this.checked);
@@ -30,8 +28,8 @@ export class Component {
     this.checkBox = this.shadowDom.getElementById("checkbox");
     componentSetup(options, this.funcs, this.component);
     this.wrap = this.shadowDom.getElementById("wrap");
-    this.wrap.addEventListener("click", () => {
-      this.funcs.switch();
+    this.wrap.addEventListener("click", (e) => {
+      if (e.target != this.checkBox) this.funcs.switch();
     });
     this.wrap.addEventListener("click", (e) => {
       waveListenerCenter(e, this.wrap, this.component.style.accentColor);
@@ -41,5 +39,13 @@ export class Component {
       "change",
       "update",
     ]);
+  }
+
+  get checked() {
+    return this.checkBox.checked;
+  }
+
+  set checked(check) {
+    this.checkBox.checked = check;
   }
 }
