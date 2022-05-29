@@ -52,9 +52,10 @@ export class Component {
       this.textComponent = this.textElem.component.component;
       this.textComponent.run.styleSet("button");
 
-      this.button.addEventListener("click", (e) =>
-        waveListener(e, this.button, this.colors.wave[this.type])
-      );
+      this.button.addEventListener("click", (e) => {
+        this.updateColors();
+        waveListener(e, this.button, this.colors.wave[this.type]);
+      });
       this.applyType();
 
       componentSetup(options, this.funcs, this.component);

@@ -38,7 +38,6 @@
   position: absolute;
   border-radius: 50%;
   aspect-ratio: 1;
-  width: 0px;
   animation: wave 1s;
   transform: translate(-50%, -50%);
   opacity: 0.6;
