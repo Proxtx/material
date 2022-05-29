@@ -1,5 +1,4 @@
 button {
-  margin: calc(var(--contentSpacing));
   transition: var(--transitionTime);
   padding: var(--contentSpacing) calc(var(--contentSpacing) * 2.6)
     var(--contentSpacing) calc(var(--contentSpacing) * 2.6);
