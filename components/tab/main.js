@@ -5,9 +5,14 @@ import {
 
 export class Component {
   component = {};
-  funcs = {};
+  funcs = {
+    name: (name) => {
+      this.name = name;
+    },
+  };
   options;
   shadowDom;
+  name;
   attributeChangedCallback = attributeChangedCallbackGen(this.funcs);
 
   constructor(options) {
