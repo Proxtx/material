@@ -13,11 +13,13 @@ export class Component {
   options;
   shadowDom;
   name;
+  tab;
   attributeChangedCallback = attributeChangedCallbackGen(this.funcs);
 
   constructor(options) {
     this.options = options;
     this.shadowDom = options.shadowDom;
+    this.tab = this.shadowDom.getElementById("tab");
     componentSetup(options, this.funcs, this.component);
   }
 }

@@ -2,6 +2,8 @@
   position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 #topBar {
@@ -25,4 +27,12 @@
   left: 0;
   top: 100%;
   transform: translateY(-100%);
+}
+
+#content {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }

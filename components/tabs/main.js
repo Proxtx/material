@@ -16,21 +16,29 @@ export class Component {
     this.options = options;
     this.shadowDom = options.shadowDom;
     this.tabsElem = this.shadowDom.getElementById("tabs");
+    this.tabsContainer = this.shadowDom.getElementById("tabsContainer");
     this.highlighter = this.shadowDom.getElementById("highlighter");
+    this.content = this.shadowDom.getElementById("content");
     componentSetup(options, this.funcs, this.component);
-    this.addTab("test1234", 0);
-    this.addTab("test1234 dsafas df", 0);
-    this.addTab("test12", 0);
-    this.addTab("test1234 ok 2ia", 0);
-    setTimeout(() => {
-      this.focusTab(this.tabs[1]);
-    }, 1000);
+
+    this.generateTabs().then(async () => {
+      let d = document.createElement("div");
+      d.style.transition = this.component.style.transitionTime;
+      this.shadowDom.appendChild(d);
+      let duration =
+        getComputedStyle(d).transitionDuration.split("s")[0] * 1000;
+      this.shadowDom.removeChild(d);
+      await new Promise((r) => setTimeout(r, duration));
+      this.focusTab(this.tabs[0]);
+    });
   }
 
   addTab = async (tabElem) => {
-    //
-    let tab = {};
-    let title = this.generateTitle(tabElem);
+    let tab = {
+      tab: tabElem,
+      index: this.tabsElem.childElementCount,
+    };
+    let title = this.generateTitle(tabElem.component.name);
     this.tabsElem.appendChild(title);
     tab.title = title;
     await uiBuilder.ready(title);
@@ -42,7 +50,21 @@ export class Component {
   };
 
   focusTab = (tab) => {
-    this.activeTab && this.unfocusTab(this.activeTab);
+    let transitionTime = tab.tab.style.transition;
+    tab.tab.style.transition = "0s";
+
+    if (this.activeTab && this.activeTab != tab) {
+      this.unfocusTab(this.activeTab);
+
+      this.activeTab.tab.style.left =
+        (this.activeTab.index < tab.index ? "-" : "") + "100%";
+      tab.tab.style.left =
+        (this.activeTab.index > tab.index ? "-" : "") + "100%";
+    }
+
+    tab.tab.style.transition = transitionTime;
+    tab.tab.style.left = "0";
+
     this.activeTab = tab;
     tab.title.component.textElem.component.textElem.style.color =
       "var(--accentColor)";
@@ -66,5 +88,12 @@ export class Component {
       button.component.button.style.height = "100%";
     });
     return button;
+  };
+
+  generateTabs = async () => {
+    for (let i of this.tabsContainer.assignedElements()) {
+      await uiBuilder.ready(i);
+      await this.addTab(i);
+    }
   };
 }

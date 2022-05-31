@@ -38,7 +38,7 @@
   position: absolute;
   border-radius: 50%;
   aspect-ratio: 1;
-  animation: wave 1s forwards;
+  animation: wave calc(var(--transitionTime) * 5) forwards;
   transform: translate(-50%, -50%);
   opacity: 0.6;
   pointer-events: none;
