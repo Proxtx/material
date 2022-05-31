@@ -7,7 +7,7 @@ export const wave = (elem, x, y, color) => {
   elem.appendChild(waveElem);
   setTimeout(() => {
     elem.removeChild(waveElem);
-  }, 3000);
+  }, getComputedStyle(waveElem).animationDuration.split("s")[0] * 1000);
 };
 
 export const waveListener = (e, elem, color) => {
