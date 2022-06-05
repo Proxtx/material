@@ -20,6 +20,8 @@ https://mui.com/components/bottom-navigation/
 https://mui.com/components/menus/
 https://mui.com/components/tabs/
 https://mui.com/material-ui/react-table/ !!!
+https://mui.com/material-ui/react-dialog/ !!!
+icon buttons
 
 https://mui.com/components/box/ !!!!! Use box for custom html code (turns out this stupid)
 
