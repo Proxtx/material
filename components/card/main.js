@@ -10,6 +10,10 @@ export class Component {
     wave: (enabled) => {
       this.wave = enabled;
     },
+    padding: (padding) => {
+      this.component.style.padding =
+        padding === true || padding === false ? (padding ? 1 : 0) : padding;
+    },
   };
   options;
   shadowDom;

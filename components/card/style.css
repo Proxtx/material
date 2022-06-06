@@ -1,5 +1,9 @@
+:host {
+  --padding: 1;
+}
+
 #card {
-  padding: calc(var(--contentSpacing) * 2);
+  padding: calc(var(--contentSpacing) * 2 * var(--padding));
   box-shadow: var(--shadow);
   border-radius: var(--borderRadius);
   background-color: var(--backgroundColor);
