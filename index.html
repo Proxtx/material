@@ -12,6 +12,7 @@
         margin: 0;
         padding: 20px;
         box-sizing: border-box;
+        overflow-x: hidden;
       }
       #test {
         padding-top: 100px;
@@ -38,7 +39,7 @@
       <m-card>
             <div style="display: flex; align-items: center">
               <m-checkbox></m-checkbox><m-text>Test 5678</m-text
-                ><m-button>Hallo 12345</m-button>
+                ><m-divider type="vertical"></m-divider><m-button>Hallo 12345</m-button>
               </div>
       </m-card>
     </div>
@@ -47,8 +48,7 @@
     <m-text-input type="filled" placeholder="Filled"></m-text-input>
     <m-text-input type="standard" placeholder="Standard"></m-text-input>
     <m-text-input type="outlined" placeholder="Outlined" value="With custom value"></m-text-input>
-    <br>
-    <br>
+    <m-divider></m-divider>
     <m-text-input type="outlined" placeholder="Outlined" textarea="true"></m-text-input>
     <m-text-input type="filled" placeholder="Filled" textarea="true"></m-text-input>
     <m-text-input type="standard" placeholder="Standard" textarea="true"></m-text-input>

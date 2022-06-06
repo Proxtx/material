@@ -1,0 +1,26 @@
+:host {
+  --shortSide: 1px;
+  --longSide: 100%;
+  --margin: 1;
+  --minLong: calc(var(--contentSpacing) * 3);
+}
+
+#divider {
+  background-color: var(--darkGrey);
+}
+
+.horizontal {
+  width: var(--longSide);
+  height: var(--shortSide);
+  min-width: var(--minLong);
+  margin-top: calc(var(--contentSpacing) * var(--margin));
+  margin-bottom: calc(var(--contentSpacing) * var(--margin));
+}
+
+.vertical {
+  width: var(--shortSide);
+  height: var(--longSide);
+  min-height: var(--minLong);
+  margin-left: calc(var(--contentSpacing) * var(--margin));
+  margin-right: calc(var(--contentSpacing) * var(--margin));
+}

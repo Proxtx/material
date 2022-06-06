@@ -41,6 +41,12 @@
       "template": "/components/tab/index.html",
       "component": "/components/tab/main.js",
       "styles": ["/components/lib/main.css", "/components/tab/style.css"]
+    },
+    "divider": {
+      "name": "m-divider",
+      "template": "/components/divider/index.html",
+      "component": "/components/divider/main.js",
+      "styles": ["/components/lib/main.css", "/components/divider/style.css"]
     }
   }
 }
