@@ -18,6 +18,10 @@ export class Component {
     value: (value) => {
       this.value = value;
     },
+    password: (password) => {
+      if (password) this.input.type = "password";
+      else this.input.type = "text";
+    },
   };
   options;
   shadowDom;
