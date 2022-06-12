@@ -22,6 +22,10 @@ export class Component {
       if (password) this.input.type = "password";
       else this.input.type = "text";
     },
+    number: (number) => {
+      if (number) this.input.type = "number";
+      else this.input.type = "text";
+    },
   };
   options;
   shadowDom;
