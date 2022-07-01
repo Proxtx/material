@@ -48,5 +48,6 @@
       "component": "/components/divider/main.js",
       "styles": ["/components/lib/main.css", "/components/divider/style.css"]
     }
-  }
+  },
+  "version": 1
 }
