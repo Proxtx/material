@@ -26,6 +26,14 @@ export class Component {
       if (number) this.input.type = "number";
       else this.input.type = "text";
     },
+    date: (date) => {
+      this.isDate = true;
+      if (date) this.input.type = "date";
+      else {
+        this.input.type = "text";
+        this.isDate = false;
+      }
+    },
   };
   options;
   shadowDom;
@@ -183,7 +191,7 @@ export class Component {
 
   applyType = () => {
     let namedFocus = this.focused ? "focused" : "notFocused";
-    let namedActive = this.input.value ? "Active" : "NotActive";
+    let namedActive = this.input.value || this.isDate ? "Active" : "NotActive";
     applyType(this.type, this.input, this.typeClasses.input);
     applyType(
       namedFocus + namedActive,
