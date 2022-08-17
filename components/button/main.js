@@ -29,6 +29,10 @@ export class Component {
       this.typeClasses.global.disabled = disabled;
       this.applyType();
     },
+    stretch: (stretch) => {
+      this.typeClasses.global.stretch = stretch;
+      this.applyType();
+    },
   };
 
   typeClasses = {
