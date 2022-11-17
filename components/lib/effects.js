@@ -5,7 +5,7 @@ export const wave = (elem, x, y, color) => {
   waveElem.style.top = y + "px";
   waveElem.style.backgroundColor = color;
   elem.appendChild(waveElem);
-  elem.addEventListener("mouseup", async () => {
+  document.addEventListener("mouseup", async () => {
     waveElem.style.opacity = 0;
     await new Promise((r) => setTimeout(r, 5000));
     elem.removeChild(waveElem);
