@@ -58,6 +58,9 @@ export class Component {
 
       this.button.addEventListener("click", (e) => {
         this.updateColors();
+      });
+
+      this.button.addEventListener("mousedown", (e) => {
         waveListener(e, this.button, this.colors.wave[this.type]);
       });
       this.applyType();

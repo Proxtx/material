@@ -36,7 +36,7 @@ export class Component {
     this.wrap.addEventListener("click", (e) => {
       if (!this.disable) if (e.target != this.checkBox) this.funcs.switch();
     });
-    this.wrap.addEventListener("click", (e) => {
+    this.wrap.addEventListener("mousedown", (e) => {
       if (!this.disable)
         waveListenerCenter(e, this.wrap, this.component.style.accentColor);
     });

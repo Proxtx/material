@@ -23,12 +23,10 @@
 @keyframes wave {
   0% {
     width: 0%;
-    opacity: 0.6;
   }
 
   100% {
     width: 200%;
-    opacity: 0;
   }
 }
 
@@ -38,9 +36,11 @@
   position: absolute;
   border-radius: 50%;
   aspect-ratio: 1;
-  animation: wave calc(var(--transitionTime) * 5) forwards;
+  animation: wave calc(var(--transitionTime) * 7) forwards;
+  animation-timing-function: cubic-bezier(0.33, 0.8, 0.12, 0.55);
   transform: translate(-50%, -50%);
   opacity: 0.6;
+  transition: calc(var(--transitionTime) * 3);
   pointer-events: none;
 }
 

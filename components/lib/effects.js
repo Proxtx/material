@@ -5,9 +5,11 @@ export const wave = (elem, x, y, color) => {
   waveElem.style.top = y + "px";
   waveElem.style.backgroundColor = color;
   elem.appendChild(waveElem);
-  setTimeout(() => {
+  elem.addEventListener("mouseup", async () => {
+    waveElem.style.opacity = 0;
+    await new Promise((r) => setTimeout(r, 5000));
     elem.removeChild(waveElem);
-  }, getComputedStyle(waveElem).animationDuration.split("s")[0] * 1000);
+  });
 };
 
 export const waveListener = (e, elem, color) => {

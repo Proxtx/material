@@ -26,7 +26,7 @@ export class Component {
     this.shadowDom = options.shadowDom;
     componentSetup(options, this.funcs, this.component);
     this.card = this.shadowDom.getElementById("card");
-    this.card.addEventListener("click", (e) => {
+    this.card.addEventListener("mousedown", (e) => {
       this.wave && waveListener(e, this.card, this.component.style.accentColor);
     });
   }
