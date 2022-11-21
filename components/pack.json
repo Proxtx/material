@@ -47,7 +47,13 @@
       "template": "/components/divider/index.html",
       "component": "/components/divider/main.js",
       "styles": ["/components/lib/main.css", "/components/divider/style.css"]
+    },
+    "wave": {
+      "name": "m-wave",
+      "template": "/components/wave/index.html",
+      "component": "/components/wave/main.js",
+      "styles": ["/components/lib/main.css", "/components/wave/style.css"]
     }
   },
-  "version": 6
+  "version": 7
 }

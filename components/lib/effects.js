@@ -5,11 +5,15 @@ export const wave = (elem, x, y, color) => {
   waveElem.style.top = y + "px";
   waveElem.style.backgroundColor = color;
   elem.appendChild(waveElem);
-  document.addEventListener("mouseup", async () => {
-    waveElem.style.opacity = 0;
-    await new Promise((r) => setTimeout(r, 5000));
-    elem.removeChild(waveElem);
-  });
+  document.addEventListener(
+    "mouseup",
+    async () => {
+      waveElem.style.opacity = 0;
+      await new Promise((r) => setTimeout(r, 5000));
+      elem.removeChild(waveElem);
+    },
+    { once: true }
+  );
 };
 
 export const waveListener = (e, elem, color) => {
