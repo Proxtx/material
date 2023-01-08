@@ -53,7 +53,16 @@
       "template": "/components/wave/index.html",
       "component": "/components/wave/main.js",
       "styles": ["/components/lib/main.css", "/components/wave/style.css"]
+    },
+    "overwrite-container": {
+      "name": "m-overwrite-container",
+      "template": "/components/overwrite-container/index.html",
+      "component": "/components/overwrite-container/main.js",
+      "styles": [
+        "/components/lib/main.css",
+        "/components/overwrite-container/style.css"
+      ]
     }
   },
-  "version": 8
+  "version": 9
 }

@@ -51,6 +51,10 @@ export class Component {
       this.button = this.shadowDom.getElementById("button");
       this.textElem = this.shadowDom.getElementById("text");
 
+      this.applyType();
+
+      componentSetup(options, this.funcs, this.component);
+
       await uiBuilder.ready(this.textElem);
 
       this.textComponent = this.textElem.component.component;
@@ -63,9 +67,6 @@ export class Component {
       this.button.addEventListener("mousedown", (e) => {
         waveListener(e, this.button, this.colors.wave[this.type]);
       });
-      this.applyType();
-
-      componentSetup(options, this.funcs, this.component);
 
       this.updateColors();
 

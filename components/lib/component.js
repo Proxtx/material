@@ -31,6 +31,75 @@ export const componentSetup = (options, funcs, componentExport) => {
   );
 
   component.style = style;
+  component.findAndApplyCascadingVars = () => {
+    component.cascadeVars = [];
+
+    for (let i = 0; i < options.component.style.length; i++) {
+      let attribute = options.component.style[i];
+      component.cascadeVars.push(attribute);
+      let children = getAllChildren(options.shadowDom);
+      for (let child of children) {
+        if (customElements.get(child.tagName.toLowerCase())) {
+          child.style.setProperty(attribute, style[attribute.substring(2)]);
+
+          if (child.component?.findAndApplyCascadingVars) {
+            child.component.findAndApplyCascadingVars();
+          }
+        }
+      }
+    }
+
+    for (let sheet of options.component.ownerDocument.styleSheets) {
+      for (let rule of sheet.cssRules) {
+        if (
+          rule.selectorText != ":host" &&
+          rule.selectorText != ":root" &&
+          options.component.matches(rule.selectorText)
+        ) {
+          for (let styleChange of rule.style) {
+            if (
+              styleChange.substring(0, 2) == "--" &&
+              style[styleChange.substring(2)] ==
+                rule.style.getPropertyValue(styleChange)
+            ) {
+              component.cascadeVars.push(styleChange);
+
+              let children = getAllChildren(options.shadowDom);
+
+              if (rule.style.getPropertyValue(styleChange) == " red")
+                console.log(children);
+
+              for (let child of children) {
+                if (customElements.get(child.tagName.toLowerCase())) {
+                  child.style.setProperty(
+                    styleChange,
+                    style[styleChange.substring(2)]
+                  );
+
+                  if (child.component?.findAndApplyCascadingVars) {
+                    child.component.findAndApplyCascadingVars();
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  };
+
+  component.findAndApplyCascadingVars();
+
+  let observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutationRecord) => {
+      component.findAndApplyCascadingVars();
+    });
+  });
+
+  observer.observe(options.component, {
+    attributes: true,
+    attributeFilter: ["style"],
+  });
 
   for (let i of options.component.attributes) {
     try {
@@ -84,4 +153,20 @@ const objectKeysToArray = (obj) => {
     if (obj[i]) arr.push(i);
   }
   return arr;
+};
+
+export const getAllChildren = (elem) => {
+  if (!elem.children) return [];
+  let children = [];
+  for (let child of elem.children) {
+    children.push(child);
+    children = children.concat(getAllChildren(child));
+  }
+  if (elem.assignedElements)
+    for (let child of elem.assignedElements()) {
+      children.push(child);
+      children = children.concat(getAllChildren(child));
+    }
+
+  return children;
 };

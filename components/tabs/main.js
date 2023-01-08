@@ -30,6 +30,7 @@ export class Component {
       this.shadowDom.removeChild(d);
       await new Promise((r) => setTimeout(r, duration));
       this.focusTab(this.tabs[0]);
+      this.component.findAndApplyCascadingVars();
     });
   }
 
@@ -82,6 +83,9 @@ export class Component {
     let button = document.createElement("m-button");
     button.setAttribute("type", "text");
     button.innerText = name;
+    for (let cVar of this.component.cascadeVars) {
+      button.style.setProperty(cVar, this.component.style[cVar.substring(2)]);
+    }
     uiBuilder.ready(button).then(() => {
       button.component.button.style.margin = "0";
       button.component.button.style.borderRadius = "0";
