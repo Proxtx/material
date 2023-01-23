@@ -203,7 +203,7 @@ export class Component {
   };
 
   focusEventChange = (e) => {
-    this.focused = document.activeElement == this.options.component;
+    this.focused = this.shadowDom.activeElement == this.input;
     this.applyType();
   };
 
