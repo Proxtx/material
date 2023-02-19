@@ -76,6 +76,8 @@ export const componentSetup = (options, funcs, componentExport) => {
 
   component.findAndApplyCascadingVars();
 
+  let varRenewalPending = false;
+
   let observer = new MutationObserver((mutations) => {
     mutations.forEach((mutationRecord) => {
       if (!varRenewalPending) {
@@ -83,7 +85,7 @@ export const componentSetup = (options, funcs, componentExport) => {
         setTimeout(() => {
           varRenewalPending = false;
           component.findAndApplyCascadingVars();
-        }, 10);
+        }, 100);
       } else {
         console.log(
           "Experimental! Stopped a 'findAndApplyCascadingVars' function call since one is currently pending."
