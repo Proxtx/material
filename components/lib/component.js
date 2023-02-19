@@ -83,7 +83,7 @@ export const componentSetup = (options, funcs, componentExport) => {
         setTimeout(() => {
           varRenewalPending = false;
           component.findAndApplyCascadingVars();
-        }, 100);
+        }, 10);
       } else {
         console.log(
           "Experimental! Stopped a 'findAndApplyCascadingVars' function call since one is currently pending."
