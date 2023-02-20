@@ -11,6 +11,7 @@
   width: 100%;
   height: calc(6 * var(--contentSpacing));
   border-bottom: 1px solid var(--grey);
+  overflow-x: auto;
 }
 
 #tabs {
