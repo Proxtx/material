@@ -95,6 +95,7 @@
   border-radius: var(--borderRadius);
   padding: var(--inputPaddingLeft) calc(14px * var(--scale));
   background-color: var(--backgroundColor);
+  color: var(--textColor);
 }
 
 .input:focus {
