@@ -49,8 +49,13 @@ export const componentSetup = (options, funcs, componentExport) => {
           for (let styleChange of rule.style) {
             if (
               styleChange.substring(0, 2) == "--" &&
-              style[styleChange.substring(2)] ==
-                rule.style.getPropertyValue(styleChange)
+              (style[styleChange.substring(2)] ==
+                rule.style.getPropertyValue(styleChange) ||
+                (rule.styleMap.get(styleChange)[0] instanceof
+                  CSSVariableReferenceValue &&
+                  style[
+                    rule.styleMap.get(styleChange)[0].variable.substring("--")
+                  ] == style[styleChange.substring("--")]))
             ) {
               component.cascadeVars.push(styleChange);
             }
